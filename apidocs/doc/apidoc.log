@@ -1,0 +1,18 @@
+七月 24, 2020 11:03:17 下午 io.github.yedaxia.apidocs.LogUtils info
+信息: info: found it a SPRING project, tell us if we are wrong.
+七月 24, 2020 11:03:17 下午 io.github.yedaxia.apidocs.LogUtils info
+信息: info: start find controllers in path : /home/eden/IdeaProjects/daydayup/apidocs/src
+七月 24, 2020 11:03:18 下午 io.github.yedaxia.apidocs.LogUtils info
+信息: info: find controller file : UserController.java
+七月 24, 2020 11:03:18 下午 io.github.yedaxia.apidocs.LogUtils info
+信息: info: generate api docs start...
+七月 24, 2020 11:03:18 下午 io.github.yedaxia.apidocs.LogUtils info
+信息: info: start to parse controller file : UserController.java
+七月 24, 2020 11:03:18 下午 io.github.yedaxia.apidocs.LogUtils info
+信息: info: start to generate docs for controller file : UserController.java
+七月 24, 2020 11:03:18 下午 io.github.yedaxia.apidocs.LogUtils info
+信息: info: success to generate docs for controller file : UserController.java
+七月 24, 2020 11:03:18 下午 io.github.yedaxia.apidocs.LogUtils info
+信息: info: generate api docs done !!!
+七月 24, 2020 11:03:18 下午 io.github.yedaxia.apidocs.LogUtils warn
+警告: warning!! docs config properties miss, we don't think you want to post to rap!
