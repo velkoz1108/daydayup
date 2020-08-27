@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 import java.util.concurrent.TimeUnit;
 
 @Component
-public class EventListener implements ApplicationListener<MyEventObject> {
+public class MyEventListener implements ApplicationListener<MyEventObject> {
 
     @Async
     @Override
