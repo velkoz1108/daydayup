@@ -15,7 +15,7 @@ class TestDemoApplicationTests {
     void test() {
         List<TestBean> list=new ArrayList<>();
         for(int i=0;i<=10;i++){
-            TestBean testBean=TestBean.builder().id("id_"+i).name("name_"+i).build();
+            TestBean testBean=TestBean.builder().id("id_"+i+",id_"+i).name("name_"+i).build();
             list.add(testBean);
         }
         // 获取对应的平方数
@@ -35,5 +35,18 @@ class TestDemoApplicationTests {
         System.out.println("count:"+count);
     }
 
+
+
+
+    @Test
+    public void hh(){
+        String name = "沉默王二";
+        // \u000dname="沉默王三";
+        System.out.println(name);
+
+
+        String hhh="ooo,kkk";
+        hhh.split(",");
+    }
 
 }
