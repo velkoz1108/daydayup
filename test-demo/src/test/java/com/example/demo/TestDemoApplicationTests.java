@@ -59,7 +59,7 @@ class TestDemoApplicationTests {
 
         List<String> l1=new ArrayList<>();
         list.forEach(s->l1.addAll(Arrays.asList(s.split(","))));
-        System.out.println("-----"+l1);
+        System.out.println("-----"+l1+"------");
     }
 
 
