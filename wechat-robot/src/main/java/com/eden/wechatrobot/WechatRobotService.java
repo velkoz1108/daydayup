@@ -16,12 +16,12 @@ public class WechatRobotService {
     private WechatRobotApi wechatRobotApi;
 
     @GetMapping("/msg")
-    public String sendMessage() {
+    public String sendMessage(String msg) {
         String key = wechatConfig.getKey();
         JSONObject message = new JSONObject();
 
         JSONObject content = new JSONObject();
-        content.put("content", "This message is from wechat robot.");
+        content.put("content", msg);
 
         message.put("text", content);
         message.put("msgtype", "text");
