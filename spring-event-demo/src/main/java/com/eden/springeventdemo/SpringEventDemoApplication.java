@@ -1,5 +1,6 @@
 package com.eden.springeventdemo;
 
+import com.alibaba.fastjson.JSONObject;
 import com.eden.springeventdemo.event.MyEventPublisher;
 import com.eden.springeventdemo.guava.GuavaEventListener;
 import com.eden.springeventdemo.guava.MyGuavaEvent;
@@ -9,8 +10,11 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.UUID;
 
 @RestController
@@ -23,6 +27,16 @@ public class SpringEventDemoApplication {
 
 
     }
+
+    @RequestMapping(value = "/test", method = {RequestMethod.GET, RequestMethod.POST})
+    public JSONObject test(HttpServletRequest request, String echo) {
+        System.out.println(request.getRequestURL());
+        JSONObject obj = new JSONObject();
+        obj.put("code", "888");
+        obj.put("msg", "from 8098 " + echo);
+        return obj;
+    }
+
 
     @Autowired
     private MyEventPublisher myEventPublisher;
