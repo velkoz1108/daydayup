@@ -9,6 +9,7 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 
 public class LoginInterceptor extends HandlerInterceptorAdapter {
 
@@ -46,7 +47,24 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
                 }
             }
         }
+        response401(response);
         return false;
     }
+
+    private void response401(HttpServletResponse response)
+    {
+        response.setCharacterEncoding("UTF-8");
+        response.setContentType("application/json; charset=utf-8");
+
+        try
+        {
+            response.getWriter().print("用户未登录!");
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
 
 }
