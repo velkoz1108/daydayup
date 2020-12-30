@@ -49,7 +49,7 @@ public class RedisDemoApplication {
         return myRedisTemplate;
     }
 
-    @GetMapping("/redisString")
+    @GetMapping("/test/redisString")
     public String redisString() {
         String key = "demoStr";
         ValueOperations valueOperations = redisTemplate.opsForValue();
