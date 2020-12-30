@@ -7,10 +7,16 @@ spring:
     gateway:
       routes:
         - id: eden
-          path: /test/**
           uri: http://localhost:8093
           predicates:
             - Path=/test/**
+          filters:
+            - AddRequestParameter=username,zhangsan
+          order: 1
+      filter:
+        remove-hop-by-hop:
+          headers:
+            - connection
 
 server:
   port: 9999
