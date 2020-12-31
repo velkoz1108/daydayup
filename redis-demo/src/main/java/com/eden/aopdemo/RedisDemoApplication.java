@@ -14,6 +14,7 @@ import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -49,8 +50,9 @@ public class RedisDemoApplication {
         return myRedisTemplate;
     }
 
-    @GetMapping("/redisString")
-    public String redisString() {
+    @GetMapping("/test/redisString")
+    public String redisString(@RequestParam(required = false) String username) {
+        System.out.println("username = " + username);
         String key = "demoStr";
         ValueOperations valueOperations = redisTemplate.opsForValue();
         valueOperations.set(key, "this is my redis demo.");

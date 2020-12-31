@@ -1,0 +1,31 @@
+spring:
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    database: 1
+  cloud:
+    gateway:
+      routes:
+        - id: eden
+          uri: http://localhost:8093
+          predicates:
+            - Path=/test/**
+          filters:
+            - AddRequestParameter=username,zhangsan
+          order: 1
+      filter:
+        remove-hop-by-hop:
+          headers:
+            - connection
+
+server:
+  port: 9999
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+logging:
+  level:
+    root: debug
