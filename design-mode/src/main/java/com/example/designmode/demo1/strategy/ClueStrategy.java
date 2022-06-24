@@ -1,4 +1,4 @@
-package com.example.designmode.strategy;
+package com.example.designmode.demo1.strategy;
 
 public interface ClueStrategy {
 

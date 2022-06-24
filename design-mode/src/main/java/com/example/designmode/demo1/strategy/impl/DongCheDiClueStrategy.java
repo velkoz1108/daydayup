@@ -1,6 +1,6 @@
-package com.example.designmode.strategy.impl;
+package com.example.designmode.demo1.strategy.impl;
 
-import com.example.designmode.strategy.ClueStrategy;
+import com.example.designmode.demo1.strategy.ClueStrategy;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.Random;

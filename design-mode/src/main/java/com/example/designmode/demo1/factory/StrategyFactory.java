@@ -1,9 +1,11 @@
-package com.example.designmode.factory;
+package com.example.designmode.demo1.factory;
 
-import com.example.designmode.strategy.ClueStrategy;
-import com.example.designmode.strategy.impl.DongCheDiClueStrategy;
-import com.example.designmode.strategy.impl.DouYinClueStrategy;
-import com.example.designmode.strategy.impl.OtherClueStrategy;
+
+
+import com.example.designmode.demo1.strategy.ClueStrategy;
+import com.example.designmode.demo1.strategy.impl.DongCheDiClueStrategy;
+import com.example.designmode.demo1.strategy.impl.DouYinClueStrategy;
+import com.example.designmode.demo1.strategy.impl.OtherClueStrategy;
 
 import java.util.HashMap;
 import java.util.Map;
