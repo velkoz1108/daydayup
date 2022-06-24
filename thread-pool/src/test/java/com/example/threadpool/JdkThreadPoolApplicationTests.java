@@ -4,6 +4,8 @@ import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.concurrent.*;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 @SpringBootTest
 public class JdkThreadPoolApplicationTests {
@@ -43,5 +45,22 @@ public class JdkThreadPoolApplicationTests {
                 "\t总任务数:" + executor.getTaskCount() +
                 "\t当前排队线程数:" + queue.size() +
                 "\t队列剩余大小:" + queue.remainingCapacity());
+    }
+
+    private final Lock lock = new ReentrantLock();
+    private int count;
+
+    public void add(int n) {
+        lock.lock();
+        try {
+            count += n;
+        } finally {
+            lock.unlock();
+        }
+    }
+
+    @Test
+    public void lockTest(){
+        add(8);
     }
 }
