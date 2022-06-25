@@ -6,12 +6,11 @@ import com.example.designmode.demo1.strategy.ClueStrategy;
 import com.example.designmode.demo1.strategy.impl.DongCheDiClueStrategy;
 import com.example.designmode.demo1.strategy.impl.DouYinClueStrategy;
 import com.example.designmode.demo1.strategy.impl.OtherClueStrategy;
-import com.example.designmode.demo2.BaoYangJuanDecorator;
-import com.example.designmode.demo2.BaseIntegral;
-import com.example.designmode.demo2.Integral;
-import com.example.designmode.demo2.YangShengHuDecorator;
+import com.example.designmode.demo2.*;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import java.lang.reflect.InvocationTargetException;
 
 @SpringBootTest
 class DesignModeApplicationTests {
@@ -79,6 +78,15 @@ class DesignModeApplicationTests {
         if(yangshenghuFlag){
             integral = new YangShengHuDecorator(integral);
         }
+        integral.addIntegral(1L,30);
+
+    }
+
+    @Test
+    void testIntegral2() throws NoSuchMethodException, InstantiationException, IllegalAccessException, InvocationTargetException {
+        String taocanName = "taocan3";
+
+        Integral integral = BuildUpFactory.getIntegral(taocanName);
         integral.addIntegral(1L,30);
 
     }
