@@ -12,7 +12,7 @@ import java.util.Map;
 
 //管理策略子类的工厂类
 public class StrategyFactory {
-    private static Map<String, ClueStrategy> CLUE_STRATEGY_MAP = new HashMap<>();
+    private static Map<String, ClueStrategy> CLUE_STRATEGY_MAP = new HashMap<String, ClueStrategy>();
 
     // 策略子类为单例模式
     static {

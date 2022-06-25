@@ -84,9 +84,9 @@ class DesignModeApplicationTests {
 
     @Test
     void testIntegral2() throws NoSuchMethodException, InstantiationException, IllegalAccessException, InvocationTargetException {
-        String taocanName = "taocan3";
+        String taocanCode = "taocan1";
 
-        Integral integral = BuildUpFactory.getIntegral(taocanName);
+        Integral integral = BuildUpFactory.getIntegral(taocanCode);
         integral.addIntegral(1L,30);
 
     }
