@@ -13,6 +13,7 @@ import org.apache.poi.xssf.streaming.SXSSFWorkbook;
 import org.apache.poi.xssf.usermodel.XSSFRichTextString;
 
 import javax.servlet.http.HttpServletResponse;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.net.URLEncoder;
@@ -39,6 +40,28 @@ public class ExcelExport {
         SXSSFWorkbook workbook = new SXSSFWorkbook();
         createSheet(sheetName, headers, dataList, workbook);
         workbook.write(new FileOutputStream(destFile));
+    }
+
+
+    /**
+     * description: 导出数据excel
+     *
+     * @param sheetName
+     * @param headers
+     * @param dataList
+     * @return void
+     * @version v1.0
+     * @author w
+     * @date 2020年3月30日 下午2:23:39
+     */
+    public static byte[] export(String sheetName, String[] headers, List<List<Object>> dataList) throws Exception {
+        SXSSFWorkbook workbook = new SXSSFWorkbook();
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        createSheet(sheetName, headers, dataList, workbook);
+        workbook.write(out);
+        byte[] output=out.toByteArray();
+        out.close();
+        return output;
     }
 
 

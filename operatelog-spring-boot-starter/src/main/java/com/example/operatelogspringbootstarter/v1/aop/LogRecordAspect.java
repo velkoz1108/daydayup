@@ -1,6 +1,8 @@
 package com.example.operatelogspringbootstarter.v1.aop;
 
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.example.operatelogspringbootstarter.v1.annotation.LogRecord;
 import com.example.operatelogspringbootstarter.v1.entity.LogRecordEntity;
 import lombok.extern.slf4j.Slf4j;
@@ -18,6 +20,8 @@ import org.springframework.expression.spel.support.StandardEvaluationContext;
 import org.springframework.stereotype.Component;
 
 import java.lang.reflect.Method;
+import org.apache.commons.lang3.StringUtils;
+
 
 
 @Component
@@ -34,12 +38,12 @@ public class LogRecordAspect {
     private DefaultParameterNameDiscoverer nameDiscoverer = new DefaultParameterNameDiscoverer();
 
 
-    @AfterReturning("@annotation(logRecord)")
+//    @AfterReturning("@annotation(logRecord)")
     public void invoked(JoinPoint joinPoint, LogRecord logRecord){
-        String content = logRecord.content();
+        String message = logRecord.message();
         String businessId = logRecord.businessId();
         String bizType = logRecord.bizType();
-        log.info("invoked content:{},businessId:{},bizType:{}",content,businessId,bizType);
+        log.info("invoked content:{},businessId:{},bizType:{}",message,businessId,bizType);
 
         MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
 
@@ -67,11 +71,18 @@ public class LogRecordAspect {
                 evaluationContext.setVariable(paramNames[i],args[i]); // 替换spel里的变量值为实际值， 比如 #user -->  user对象
             }
 
-            if(content.contains("#")){
-                // 解析出实际的日志信息
-                content = expressionParser.parseExpression(content).getValue(evaluationContext).toString();
-                log.info("invoked content:{}",content);
+
+            if (StringUtils.isNotBlank(message)) {
+                Expression msgExpression = expressionParser.parseExpression(message);
+                Object msgObj = msgExpression.getValue(evaluationContext, Object.class);
+                message = msgObj instanceof String ? (String) msgObj : JSON.toJSONString(msgObj, SerializerFeature.WriteMapNullValue);
+                log.info("invoked content:{}",message);
             }
+//            if(content.contains("#")){
+//                // 解析出实际的日志信息
+//                content = expressionParser.parseExpression(content).getValue(evaluationContext).toString();
+//                log.info("invoked content:{}",content);
+//            }
 
 
             businessId = expressionParser.parseExpression(businessId).getValue(evaluationContext, String.class);
@@ -80,7 +91,7 @@ public class LogRecordAspect {
             bizType = expressionParser.parseExpression(bizType).getValue(evaluationContext, String.class);
             log.info("invoked bizType:{}",bizType);
 
-            logRecordEntity.setContext(content);
+            logRecordEntity.setMessage(message);
             logRecordEntity.setBusinessId(businessId);
             logRecordEntity.setBizType(bizType);
         }

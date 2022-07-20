@@ -16,7 +16,7 @@ public class LogRecordEntity {
     private String bizType;
 
     /*日志内容*/
-    private String context;
+    private String message;
 
     /*操作人Id*/
     private String operatorId;

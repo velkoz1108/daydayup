@@ -4,14 +4,15 @@ import java.lang.annotation.*;
 
 @Target({ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
-@Inherited
+//@Inherited
 @Documented
+@Repeatable(LogRecords.class)
 public @interface LogRecord {
 
     /*
     * 日志内容
     * */
-    String content() default "";
+    String message() default "";
 
     /*
      * 业务ID
