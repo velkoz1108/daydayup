@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -153,6 +154,40 @@ class ExcelDemoApplicationTests {
 
 		private String userName;
 	}
+
+
+	@Test
+	public void bb(){
+//		BigDecimal pay = new BigDecimal("6800");
+//		int countStr = 3;
+//		BigDecimal count = new BigDecimal(countStr);
+//		BigDecimal normalFee = pay.divide(count, 2, BigDecimal.ROUND_HALF_UP);//2266.66
+//		// 4533.33
+//		BigDecimal special = pay.subtract(normalFee.multiply(new BigDecimal(countStr-1))).setScale(2, BigDecimal.ROUND_HALF_UP);
+//		System.out.println(normalFee+","+special);
+
+		String hh = "hello";
+		Boolean flag = true;
+		Map<String, BigDecimal> transportDeviceTypeMap = new HashMap<>();
+
+		User user = new User(1L,"1111","张三");
+		hhhhh(hh,flag,user,transportDeviceTypeMap);
+		System.out.println(hh+","+flag);
+		System.out.println(user);
+		System.out.println(transportDeviceTypeMap);
+
+	}
+
+	private void hhhhh(String hh,Boolean flag,User user ,Map<String, BigDecimal> transportDeviceTypeMap ){
+		 hh = "dddd";
+		 flag = flag;
+		user.setUserName("李四");
+		transportDeviceTypeMap.put("ddd",new BigDecimal("1"));
+	}
+
+
+
+
 
 
 
