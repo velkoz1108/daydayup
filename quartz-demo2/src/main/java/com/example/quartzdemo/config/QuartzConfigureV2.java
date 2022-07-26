@@ -85,28 +85,28 @@ public class QuartzConfigureV2 {
      *
      * @return
      */
-    @Bean
-    public JobDetailFactoryBean buttonobDetail() {
-        //集群模式下必须使用JobDetailFactoryBean，MethodInvokingJobDetailFactoryBean 类中的 methodInvoking 方法，是不支持序列化的
-        JobDetailFactoryBean jobDetail = new JobDetailFactoryBean();
-        jobDetail.setDurability(true);
-        jobDetail.setRequestsRecovery(true);
-        jobDetail.setJobClass(MyJop.class);
-        return jobDetail;
-    }
+//    @Bean
+//    public JobDetailFactoryBean buttonobDetail() {
+//        //集群模式下必须使用JobDetailFactoryBean，MethodInvokingJobDetailFactoryBean 类中的 methodInvoking 方法，是不支持序列化的
+//        JobDetailFactoryBean jobDetail = new JobDetailFactoryBean();
+//        jobDetail.setDurability(true);
+//        jobDetail.setRequestsRecovery(true);
+//        jobDetail.setJobClass(MyJop.class);
+//        return jobDetail;
+//    }
 
     /**
      * 配置具体执行规则
      * @param buttonobDetail
      * @return
      */
-    @Bean
-    public CronTriggerFactoryBean cronJobTrigger(JobDetail buttonobDetail) {
-        CronTriggerFactoryBean tigger = new CronTriggerFactoryBean();
-        tigger.setJobDetail(buttonobDetail);
-        tigger.setStartDelay(2000);   //延迟启动
-        tigger.setCronExpression(cronExpression);  //从application.yml文件读取
-        return tigger;
-    }
+//    @Bean
+//    public CronTriggerFactoryBean cronJobTrigger(JobDetail buttonobDetail) {
+//        CronTriggerFactoryBean tigger = new CronTriggerFactoryBean();
+//        tigger.setJobDetail(buttonobDetail);
+//        tigger.setStartDelay(2000);   //延迟启动
+//        tigger.setCronExpression(cronExpression);  //从application.yml文件读取
+//        return tigger;
+//    }
 
 }

@@ -5,8 +5,12 @@ import org.quartz.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+/*
+* 单机版
+* */
+
 //@Configuration
-public class QuartzConfig {
+public class QuartzConfigV1 {
 
     private static final String ID = "SUMMERDAY";
 
